@@ -81,7 +81,24 @@ var core = {},
 	function parser(){
 
 	}
+	parser.prototype.buffer = function(){
+		for(var i=0, len=buffer.length; i<len; i++){
+			var obj_key = Object.keys(buffer[i]);
+			if(obj_key == "OTHER"){
+				if(Object.keys(buffer[i + 1]) == "OPERATOR"){
+					if(Object.keys(buffer[i + 2]) == "CONSTRUCT"){
 
+					}else if(Object.keys(buffer[i + 2]) == "NUMBER"){
+
+					}else{
+						//Syntax err
+					}
+				}else{
+					//Syntax err
+				}
+			}
+		}
+	}
 	exports.parser = new parser();
 })(core);
 
@@ -94,8 +111,8 @@ var core = {},
 })(core);
 
 window.onload = function(){
-	core.lexer.setCode("venus.tamanho = 50");
+	core.lexer.setCode("venus = novo planeta");
 	core.lexer.word();
 	core.lexer.undestandCode();
-	console.log(buffer);
+	core.parser.buffer();
 }
