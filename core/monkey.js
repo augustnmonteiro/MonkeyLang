@@ -6,12 +6,14 @@ var core = {},
 	},
 	objects = {},
 	memory = {},
+	buffer = [],
 	operators = {
 		"+": "SUM",
 		"=": "EQUAL",
 		"-": "MINUS",
 		"/": "DIVIDE",
-		"*": "MULTIPLY"
+		"*": "MULTIPLY",
+		".": "SET"
 	},
 	logical = {
 		"e": "AND",
@@ -19,7 +21,7 @@ var core = {},
 	};
 
 (function(exports){
-	var code, words, buffer;
+	var code;
 	function lexer(){
 		
 	}
@@ -52,20 +54,26 @@ var core = {},
 			return true;
 		}
 	}
-	lexer.prototype.undestandCode = function(item, i){
-		if(this.isNull(item)){
-			console.log("Null");
-		}else if(this.isKey(item)){
-			console.log("Key");
-		}else if(this.isOperator(item)){
-			console.log("Operator");
-		}else if(this.isLogical(item)){
-			console.log("Logical");
-		}else{
-			console.log("Another");
+	lexer.prototype.isNumber = function(item){
+		if(!isNaN(parseFloat(item)) && isFinite(item)){
+			return true;
 		}
 	}
-
+	lexer.prototype.undestandCode = function(item, i){
+		if(this.isNull(item)){
+			//nothing to do
+		}else if(this.isKey(item)){
+			buffer.push({"KEY": item});
+		}else if(this.isOperator(item)){
+			buffer.push({"OPERATOR": item});
+		}else if(this.isLogical(item)){
+			buffer.push({"LOGICAL": item});
+		}else if(this.isNumber(item)){
+			buffer.push({"NUMBER": item});
+		}else{
+			buffer.push({"OTHER": item});
+		}
+	}
 	exports.lexer = new lexer();
 })(core);
 
@@ -86,7 +94,8 @@ var core = {},
 })(core);
 
 window.onload = function(){
-	core.lexer.setCode("venus = novo planeta");
+	core.lexer.setCode("venus.tamanho = 50");
 	core.lexer.word();
 	core.lexer.undestandCode();
+	console.log(buffer);
 }
