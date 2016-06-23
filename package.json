@@ -1,0 +1,29 @@
+{
+  "name": "monkeylang",
+  "author": "Augusto Monteiro",
+  "version": "1.0.0",
+  "description": "Linguagem de programação em português para crianças!",
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augustomna2010/MonkeyLang.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/augustomna2010/MonkeyLang/issues"
+  },
+  "homepage": "https://github.com/augustomna2010/MonkeyLang#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^2.13.1",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "webpack": "^1.13.1"
+  }
+}

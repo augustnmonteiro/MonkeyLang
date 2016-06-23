@@ -1,0 +1,8 @@
+# VIM
+*.swp
+
+# NODE
+node_modules
+
+# BUILD
+build

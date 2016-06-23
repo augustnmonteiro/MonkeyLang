@@ -1,4 +1,4 @@
-## monkeyLang
+## MonkeyLang
 Linguagem de programação em português para crianças!
 
 ## Javascript based
